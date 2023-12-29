@@ -3,23 +3,47 @@
 //     setTimeout(() => {
 //         return console.log(message);
 //     }, 2000);
-    
+
 // }
 
 
-function getWords (word) {
+function countDown(num, callback) {
+
     setTimeout(() => {
-        return console.log(`This is the first return ${word}`);
+
+        if (num > 0) {
+            console.log(num);
+            countDown(num - 1, callback);
+        } else {
+            callback();
+        }
+
     }, 1000);
-    setTimeout(() => {
-        return console.log(`This is the second return ${word}`);
-    }, 3000);
-    setTimeout(() => {
-        return console.log(`This is the third return ${word}`);
-    }, 2000);
+
+
 }
 
 
-getWords('Giraffe');
+const isDone = () => {
+    console.log("Jobs Done");
+}
 
+
+// function getWords(word) {
+//     setTimeout(() => {
+//         return console.log(`This is the first return ${word}`);
+//     }, 1000);
+//     setTimeout(() => {
+//         return console.log(`This is the second return ${word}`);
+//     }, 3000);
+//     setTimeout(() => {
+//         return console.log(`This is the third return ${word}`);
+//     }, 2000);
+// }
+
+
+// getWords('Giraffe');
+
+
+countDown(6, isDone);
 // drillingAsync('Today we are drilling aysnc')
