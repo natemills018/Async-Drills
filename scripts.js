@@ -1,3 +1,5 @@
+let asyncButton = document.getElementById('asyncButton');
+
 // function drillingAsync (message, delay) {
 
 //     setTimeout(() => {
@@ -47,3 +49,41 @@ const isDone = () => {
 
 countDown(6, isDone);
 // drillingAsync('Today we are drilling aysnc')
+
+
+let lunchTime = false;
+
+function orderMeSomeFood(message) {
+    return new Promise((resolve, reject) => {
+        if (lunchTime === true) {
+            let yourLunch = document.createElement('div');
+            yourLunch.className = 'eatUp';
+            yourLunch.lunch = 'your favourite lunch';
+            yourLunch.drink = 'your favourite drink';
+
+            // let yourLunch = {
+            //     lunch: "your favourite lunch",
+            //     drink: "your favourite drink",
+            // }
+            console.log(yourLunch.drink);
+            resolve(message);
+        } else {
+            let error = new Error('Something odd has happened');
+            reject(error);
+        }
+    })
+}
+
+
+asyncButton.addEventListener('click', () => {
+
+    orderMeSomeFood('Pineapple')
+        .then((a) => {
+            console.log(a);
+        }).catch((e) => {
+                console.log('An error has occured');
+            })
+})
+
+
+
